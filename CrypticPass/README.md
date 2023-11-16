@@ -73,7 +73,6 @@
                     missing or the data is not found in the file.</li>
                 </ul>
         </ul>
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
     <h3 align="center">CRUD Principle</h3>
         <ul>
         <li>Create</li>
@@ -105,7 +104,9 @@
             associated with a specific website and email combination.<br>
             It prompts the user to confirm the deletion.</li>
             </ul>
-        </ul> 
+        </ul>
+        <h3 align="center">Contact</h3>
+        <p>Camille Onoda - <a href="mailto: info@camilleonoda.com">Email</a> - <a href="https://linkedin.com/in/camilleonoda">LinkedIn</a></p>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 </body>
