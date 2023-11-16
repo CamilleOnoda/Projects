@@ -9,6 +9,7 @@
     <div align="center">
         <h1 align="center">CrypticPass</h1>
         <img src="./crypticpass.png" alt="CrypticPass User Interface" width="500" height="400">
+        <a href="" alt="Video explaining the CrypticPass app">
     </div>
     <p>This program is a simple password generator/manager with a graphical user
      interface (GUI) built using the Tkinter library in Python.
@@ -72,6 +73,13 @@
                     <li>An error message is displayed if any information is 
                     missing or the data is not found in the file.</li>
                 </ul>
+        </ul>
+    <h3 align="center">Requirements</h3>
+    <h4>pip-installable libraries</h4>
+        <ul>
+        <li>cryptography==41.0.5</li>
+        <li>pyperclip==1.8.2</li>
+        <li>pytest==7.4.3</li>
         </ul>
     <h3 align="center">CRUD Principle</h3>
         <ul>
