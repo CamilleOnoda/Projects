@@ -11,12 +11,10 @@
         <img src="./crypticpass.png" alt="CrypticPass User Interface" width="500" height="400">
         <a href="" alt="Video explaining the CrypticPass app">
     </div>
-    <p>This program is a simple password generator/manager with a graphical user
-     interface (GUI) built using the Tkinter library in Python.
+    <p>This program is a simple password generator/manager built with Python using the Tkinter library as well as the 
+     cryptography library and fernet module to encrypt and decrypt passwords.
      <p>Users can manage multiple entries per website, each associated with a 
-     unique email and an encrypted password.<br>The program allows users to retrieve 
-     passwords based on specific website and email combinations<br>and also provides
-      the option to delete information for a particular website and email address.</p>
+     unique email and an encrypted password. A random password is generated based on a number of characters specified by the user. The password can then be copied to the clipboard and saved to a Json file. When saved, the password is encrypted with a unique encryption key.<br>The program allows users to search for a password based on specific website and email combinations; the password is decrypted and automatically copied to the clipboard allowing the user to use the password immediately.<br>The program also provides the option to delete all information for a specific website and email address combination.</p>
      <h3 align="center">Main features</h3>
         <ul>
             <li>External libraries:</li>
