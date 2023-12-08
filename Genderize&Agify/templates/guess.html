@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div style="text-align: center;">
+    <p>Hey {{ name.title() }}!</p>
+    <p>I think you are {{ gender }}.</p>
+    <p>And maybe {{ age }} years old.</p>
+    <img src="../static/cat.gif" alt="">
+</div>
+<div style="text-align: center;">
+    <a href="{{ url_for('index') }}">Back</a>
+</div>
+
+
+{% endblock %}

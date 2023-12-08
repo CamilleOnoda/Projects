@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+    <h1 style="text-align: center;">Determine the gender and average age of a name</h1>
+    <form action="/guess" method="post" style="text-align: center;">
+        <input autocomplete="off" autofocus name="name" placeholder="Name" type="text">
+        <button type="submit">Ready?</button>
+    </form>
+
+{% endblock %}
