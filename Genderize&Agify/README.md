@@ -10,8 +10,6 @@
     </div>
     <p>This web application allows user to enter a name and to see if people with this name are generally male or female and their average age.</p>
     <p>I learned more about creating routes, building URL and rendering HTML files dynamically. I really loved using Jinja templates and combining them with APIs.</p>
-    <video width="320" height="240" src="./genderize-agify.mp4" type=video/mp4>
-    </video>
     <h2 style="text-align: center;">Technologies</h2>
     <ul>
     <li>HTML</li>
