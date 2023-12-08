@@ -7,7 +7,7 @@
 <body>
 <a name="readme-top"></a>
     <div align="center">
-        <h1 align="center">CrypticPass</h1>
+        <h1 align="center">Pomodoro</h1>
         <img src="./pomodoro.png" alt="Pomodoro Timer User Interface" width="400" height="400">
         <a href="" alt="Video showing the Pomodoro Timer app">
     </div>
