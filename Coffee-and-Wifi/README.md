@@ -12,8 +12,8 @@
 for managing information about cafes. The application allows users to view a
 list of cafes, add new cafes, edit existing cafe details, and delete cafes
 from the database.</p>
-<img src="static/images/homepage.png" width="400">
-<img src="static/images/cafes.png" width="400">
+<img src="static/images/homepage.png" width="600">
+<img src="static/images/cafes.png" width="600">
 
 <h2>How did I build this landing page?</h2>
 <ul>
@@ -28,15 +28,15 @@ from the database.</p>
 <ul>
 <li>Python installed on your system.</li>
 <li>Install required packages using the following command:</li>
-<img src="static/images/pipinstall.png" width="400">
+<img src="static/images/pipinstall.png" width="600">
 </ul>
 <h2>Running the Application</h2>
 <ul>
 <li>Clone or download the repository to your local machine.</li>
 <li>Navigate to the project directory in your terminal.</li>
-<img src="static/images/cd-path.png" width="400">
+<img src="static/images/cd-path.png" width="600">
 <li>Run the Flask application script.</li>
-<img src="static/images/python-scriptname.png" width="400">
+<img src="static/images/python-scriptname.png" width="600">
 <p>Make sure to replace script_name.py with the actual name of your Python script.</p>
 <li>Open a web browser and go to http://127.0.0.1:5000/ to access the application.</li>
 </ul>
