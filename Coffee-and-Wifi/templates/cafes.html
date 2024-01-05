@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}Cafes{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>All Cafes</h1>
+	    <table class="table table-hover table-dark table-striped table-responsive w-100 d-block d-lg-table">
+          <tbody>
+          {% if cafes_list == [] %}
+          <p>This list is empty.<br>Add a new cafe!</p>
+          {% endif %}
+            <th>Cafe</th>
+            <th>City/Prefecture</th>
+            <th>Location (URL)</th>
+            <th>Opening hours</th>
+            <th>Closing days</th>
+            <th>Sweets rating</th>
+            <th>Coffee rating</th>
+            <th>Wifi strength</th>
+            <th>Power socket availability</th>
+
+            {% for cafe in cafes_list %}
+              <tr>
+                <td>{{ cafe.cafe }}</td>
+                <td>{{ cafe.city }}</td>
+                <td>
+                {% if cafe.location.startswith('http') %}
+                  <a href="{{ cafe.location }}" target="_blank" rel="noopener noreferrer">
+                  Maps link</a>
+                {% else %}
+                  <p>Location not found</p>
+                {% endif %}
+                </td>
+                <td>{{ cafe.open_hours }}</td>
+                <td>{{ cafe.closed }}</td>
+                <td>{{ cafe.sweets }}</td>
+                <td>{{ cafe.coffee }}</td>
+                <td>{{ cafe.wifi }}</td>
+                <td>{{ cafe.power }}</td>
+                <td><a class="btn btn-warning btn-m" href="{{ url_for('delete', id=cafe.id) }}">
+                  Delete</a></td>
+                <td><a class="btn btn-warning btn-m" href="{{ url_for('edit', id=cafe.id) }}">
+                  Edit</a></td>
+            {% endfor %}
+            </tr>
+          </tbody>
+  	  </table>
+      <a class="btn btn-warning btn-m" href="{{ url_for('add') }}">
+        Add a new cafe</a>
+      <a class="btn btn-warning btn-m" href="{{ url_for('home') }}">
+        Return to home page</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
