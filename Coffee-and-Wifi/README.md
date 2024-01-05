@@ -76,7 +76,7 @@ from the database.</p>
 </ul>
 <h2 style="text-align:center">Important Note</h2>
 <ul>
-<li>This application is configured to run in debug mode (app.run(debug=True)), which is suitable for development but should be disabled in a production environment.</li><br>
+<li>This application is configured to run in debug mode (app.run(debug=True)), which is suitable for development but should be disabled in a production environment.</li></ul><br>
 <p>Feel free to explore and customize the application according to your needs. If you encounter any issues or have suggestions, please refer to the Flask documentation or open an issue in the repository.<p>
 <h2 style="text-align:center">Thank you!</h2>
 <p>Thank you to <a href="https://codepen.io/P1N2O/pen/pyBNzX">Manuel Pinto </a>for creating this beautiful gradient background animation for the title and footer sections.</p>
