@@ -1,0 +1,62 @@
+/*Home page*/
+.jumbotron {
+  background: linear-gradient(300deg, #00bfff, #A367B1, #ef8172);
+  background-size: 180% 180%;
+  animation: gradient-animation 18s ease infinite;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  height: 100vh;
+  color: white;
+  background-color: #333;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/*Applied to all pages*/
+body {
+background-color: #423F3E;
+color: white;
+}
+
+a {
+    color: #ffc107;
+}
+
+/*Form for the add.html*/
+#form {
+  display: inline-grid;
+  width: 400px;
+  margin: auto;
+}
+
+label {
+  font-weight: bold;
+  padding: 5px 0;
+}
+
+/*Buttons on every page*/
+.btn {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+/*Add and Edit buttons*/
+#btn {
+  width: 111px;
+}
+
+/*Edit and delete buttons in cafes.html
+#edit-delete-btn {
+  background-color: #423F3E;
+}*/
