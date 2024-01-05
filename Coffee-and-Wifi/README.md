@@ -12,7 +12,7 @@
 for managing information about cafes. The application allows users to view a
 list of cafes, add new cafes, edit existing cafe details, and delete cafes
 from the database.</p>
-<img src="static/images/homepage.png" width="600">
+<img src="static/images/home-page.png" width="600">
 <img src="static/images/cafes.png" width="600">
 
 <h2>How did I build this landing page?</h2>
