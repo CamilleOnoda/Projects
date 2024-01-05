@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,6 +81,3 @@ from the database.</p>
 <h2 style="text-align:center">Thank you!</h2>
 <p>Thank you to <a href="https://codepen.io/P1N2O/pen/pyBNzX">Manuel Pinto </a>for creating this beautiful gradient background animation for the title and footer sections.</p>
 </body>
-=======
-
->>>>>>> e2c62ee4e1d99c56ba02748dc775acb41d1bd19f
