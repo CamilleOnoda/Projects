@@ -56,7 +56,9 @@ label {
   width: 111px;
 }
 
-/*Edit and delete buttons in cafes.html
-#edit-delete-btn {
-  background-color: #423F3E;
-}*/
+/*Background color for the cafes.html table*/
+.table-dark {
+  --bs-table-bg: #212529;
+  --bs-table-hover-bg: #FFEADD;
+  --bs-table-hover-color: black;
+}
