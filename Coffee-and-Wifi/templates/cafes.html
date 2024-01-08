@@ -27,7 +27,7 @@
                 <td>{{ cafe.city }}</td>
                 <td>
                 {% if cafe.location.startswith('http') %}
-                  <a href="{{ cafe.location }}" target="_blank" rel="noopener noreferrer">
+                  <a id="map" href="{{ cafe.location }}" target="_blank" rel="noopener noreferrer">
                   Google Map</a>
                 {% else %}
                   <p>Location not found</p>
