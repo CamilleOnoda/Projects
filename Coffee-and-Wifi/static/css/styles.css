@@ -57,18 +57,28 @@ label {
   width: 111px;
 }
 
+/* Cafes list: center headers vertically and horizontally */
+.table thead th {
+  text-align: center;
+  vertical-align: middle;
+}
+
 /*Background color for the cafes.html table*/
 .table-dark {
   --bs-table-bg: #212529;
-  --bs-table-hover-bg: #E2DCD5;
   --bs-table-hover-color: black;
 }
 
-.table tr:hover,
-.table tr:hover .btn {
+.table tr:hover {
   font-weight: bold;
 }
 
-.table tr:hover #map {
+.table tr:hover .btn {
+  font-weight: bold;
+  color: black;
+}
+
+.table tr:hover a {
+  font-weight: bold;
   color: black;
 }
