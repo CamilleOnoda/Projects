@@ -60,6 +60,15 @@ label {
 /*Background color for the cafes.html table*/
 .table-dark {
   --bs-table-bg: #212529;
-  --bs-table-hover-bg: #FFEADD;
+  --bs-table-hover-bg: #E2DCD5;
   --bs-table-hover-color: black;
+}
+
+.table tr:hover,
+.table tr:hover .btn {
+  font-weight: bold;
+}
+
+.table tr:hover #map {
+  color: black;
 }
