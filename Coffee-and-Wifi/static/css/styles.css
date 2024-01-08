@@ -27,6 +27,10 @@
 body {
 background-color: #423F3E;
 color: white;
+font-family: 'Roboto Mono', monospace;
+h1 {
+  font-family: 'Sacramento', cursive;
+}
 }
 
 a {
@@ -57,16 +61,22 @@ label {
   width: 111px;
 }
 
-/* Cafes list: center headers vertically and horizontally */
+/* Cafes list: center headers vertically and horizontally*/
 .table thead th {
-  text-align: center;
-  vertical-align: middle;
+  text-align: left;
+  vertical-align:baseline;
+  padding: 15px;
 }
 
-/*Background color for the cafes.html table*/
+/*Text doesn't wrap over several lines*/
+.table td {
+  white-space: nowrap;
+}
+
+/*Background color on hover for the cafes.html table*/
 .table-dark {
   --bs-table-bg: #212529;
-  --bs-table-hover-color: black;
+  --bs-table-hover-color: #FF6D24;
 }
 
 .table tr:hover {
@@ -80,5 +90,5 @@ label {
 
 .table tr:hover a {
   font-weight: bold;
-  color: black;
+  color: #FF6D24;
 }
