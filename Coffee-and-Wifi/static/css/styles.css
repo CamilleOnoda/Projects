@@ -63,8 +63,8 @@ label {
 
 /* Cafes list: center headers vertically and horizontally*/
 .table thead th {
-  text-align: left;
-  vertical-align:baseline;
+  text-align: center;
+  vertical-align: middle;
   padding: 15px;
 }
 
@@ -109,4 +109,33 @@ label {
 /*Remove border for the headers*/
 .table th {
   border-right: none;
+}
+
+/* Center text in table cells */
+.table th,
+.table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+/*Screen below 1000px*/
+@media (max-width: 1000px) {
+  .table thead th:first-child,
+  .table tbody td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 1; /*Ensures that the column appears above the other columns*/
+    border-right: 1px solid #E38259;
+  }
+  .table th:first-child::after,
+  .table td:first-child::after {
+    content: '';
+    position: absolute; /*Position relative to its containing block*/
+    top: 0; /*Position at the top right corner of the column*/
+    right: 0;
+    height: 100%;
+    width: 1px;
+    background-color: #E38259;
+
+  }
 }
