@@ -64,10 +64,17 @@ from the database.</p>
 <li>Edit existing cafe details by providing the cafe ID and updating the necessary information through a form.</li>
 <li>Updated information is stored in the database.</li>
 </ul>
+<h2>Delete cafe page</h2>
+<ul>
+<li>Access the delete cafe page at /delete.</li>
+<li>Delete all information about a cafe. If the cafe with the specified id is found, it is deleted from the database, and the user is redirected to the list of all cafes (/cafes).</li>
+</ul>
 <h2 style="text-align:center">Database</h2>
 <ul>
-<li>The application uses SQLite as the database.</li>
-<li>Database connection details and configurations are specified in the script.</li>
+<li>The database is set up to use SQLite, with the file name "coffee-wifi.db".</li>
+<li>The application uses the Flask-SQLAlchemy extension to interact with the database.</li>
+<li>The SECRET_KEY is generated either from the environment variable "SECRET_KEY" or using os.urandom(24).</li>
+<li>It defines a model for a Cafe table with various attributes.</li>
 </ul>
 <h2 style="text-align:center">Configuration</h2>
 <ul>
