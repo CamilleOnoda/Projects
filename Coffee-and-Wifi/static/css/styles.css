@@ -76,7 +76,7 @@ label {
 /*Background color on hover for the cafes.html table*/
 .table-dark {
   --bs-table-bg: #212529;
-  --bs-table-hover-color: #FF6D24;
+  --bs-table-hover-color: #E38259;
 }
 
 .table tr:hover {
@@ -90,5 +90,5 @@ label {
 
 .table tr:hover a {
   font-weight: bold;
-  color: #FF6D24;
+  color: #E38259;
 }
