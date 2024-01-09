@@ -98,7 +98,7 @@ label {
   border-right: 1px solid #E38259;
 }
 
-/*Remove the border from the last column*/
+/*Remove the border from the last 2 columns*/
 .table th:nth-last-child(2),
 .table td:nth-last-child(2),
 .table th:last-child,
@@ -106,6 +106,7 @@ label {
   border-right: none;
 }
 
+/*Remove border for the headers*/
 .table th {
   border-right: none;
 }
