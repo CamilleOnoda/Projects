@@ -15,7 +15,7 @@ from the database.</p>
 <img src="static/images/home-page.png" width="600">
 <img src="static/images/cafes-list.png" width="600">
 
-<h2>How did I build this landing page?</h2>
+<h2>Built with</h2>
 <ul>
 <li>Python</li>
 <li>SQLalchemy</li>
