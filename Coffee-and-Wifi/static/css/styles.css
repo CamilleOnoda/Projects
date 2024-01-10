@@ -1,6 +1,6 @@
 /*Home page*/
 .jumbotron {
-  background: linear-gradient(300deg, #FF6D24, #4E413B, #857671);
+  background: linear-gradient(-45deg, #FF6D24, #4E413B, #857671);
   background-size: 180% 180%;
   animation: gradient-animation 18s ease infinite;
   display: flex;
