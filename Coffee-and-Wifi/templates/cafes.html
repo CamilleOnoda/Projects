@@ -5,12 +5,10 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <h1 style="text-align: center;">All Cafes</h1>
+      <h1 style="text-align: center;">Cafe crawl ~ Local finds</h1>
 	    <table class="table table-hover table-dark table-striped table-responsive w-100 d-block d-lg-table">
-          <tbody>
-          {% if cafes_list == [] %}
-          <p>This list is empty.<br>Add a new cafe!</p>
-          {% endif %}
+        <thead>
+          <tr>
             <th>Cafe</th>
             <th>City/Prefecture</th>
             <th>Location (URL)</th>
@@ -20,7 +18,16 @@
             <th>Coffee rating</th>
             <th>Wifi strength</th>
             <th>Power socket availability</th>
-
+          </tr>
+        </thead>  
+        <tbody>
+            {% if cafes_list == [] %}
+          <tr>
+            <td colspan="11">
+            <p>This list is empty.<br>Add a new cafe!</p>
+            </td>
+          </tr>
+            {% endif %}
             {% for cafe in cafes_list %}
               <tr>
                 <td>{{ cafe.cafe }}</td>
@@ -40,11 +47,11 @@
                 <td>{{ cafe.wifi }}</td>
                 <td>{{ cafe.power }}</td>
                 <td><a class="btn btn-warning btn-m" href="{{ url_for('delete', id=cafe.id) }}">
-                  Delete</a></td>
-                <td><a class="btn btn-warning btn-m" href="{{ url_for('edit', id=cafe.id) }}">
+                  Delete</a>
+                <a class="btn btn-warning btn-m" href="{{ url_for('edit', id=cafe.id) }}">
                   Edit</a></td>
+              </tr>
             {% endfor %}
-            </tr>
           </tbody>
   	  </table>
       <a class="btn btn-warning btn-m" href="{{ url_for('add') }}">
