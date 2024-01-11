@@ -98,9 +98,7 @@ label {
   border-right: 1px solid #E38259;
 }
 
-/*Remove the border from the last 2 columns*/
-.table th:nth-last-child(2),
-.table td:nth-last-child(2),
+/*Remove the border from the last column*/
 .table th:last-child,
 .table td:last-child {
   border-right: none;
