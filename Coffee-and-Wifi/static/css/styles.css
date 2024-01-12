@@ -76,21 +76,19 @@ label {
 /*Background color on hover for the cafes.html table*/
 .table-dark {
   --bs-table-bg: #212529;
-  --bs-table-hover-color: #E38259;
 }
 
 .table tr:hover {
   font-weight: bold;
 }
 
+.table tr:hover a {
+  font-weight: normal;
+}
+
 .table tr:hover .btn {
   font-weight: bold;
   color: black;
-}
-
-.table tr:hover a {
-  font-weight: bold;
-  color: #E38259;
 }
 
 /*Add borders between table columns*/
