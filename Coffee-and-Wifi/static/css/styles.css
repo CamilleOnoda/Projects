@@ -70,6 +70,10 @@ ul li {
   width: fit-content;
 }
 
+.btn:hover {
+  font-weight: bold;
+}
+
 /* Cafes list: center headers vertically and horizontally*/
 .table thead th {
   text-align: center;
