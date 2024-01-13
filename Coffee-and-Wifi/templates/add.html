@@ -1,41 +1,9 @@
 {% extends 'base.html' %}
+{% from 'bootstrap5/form.html' import render_form %}
 {% block title %}Add a new cafe{% endblock %}
 
 {% block content %}
-<div class="container">
-  <div class="row">
-    <div id="form" class="col-sm-12 col-md-8">
-      <h1>Add a new cafe</h1>
-      <table class="table table-hover table-dark table-striped .w-auto">
-      <tbody>
-      <form action="{{ url_for('add') }}" method="POST">
-        {{ form.hidden_tag() }}
-        <label for="cafe">Cafe</label>
-        {{ form.cafe(size=32, autofocus=true) }}
-        <label for="city">City</label>
-        {{ form.city(size=32) }}
-        <label for="location">Location</label>
-        {{ form.location(size=32) }}
-        <label for="open_hours">Opening hours</label>
-        {{ form.open_hours(size=32) }}
-        <label>Closed</label>
-        <select name="closed" multiple>
-          {% for value, label in form.closed.choices %}
-            <option value="{{ value }}">{{ label }}</option>
-          {% endfor %}
-        </select>
-        <label>Sweets</label>
-        {{ form.sweets() }}
-        <label>Coffee</label>
-        {{ form.coffee() }}
-        <label>Wifi</label>
-        {{ form.wifi() }}
-        <label>Power</label>
-        {{ form.power() }}
-        <button id="btn" class="btn btn-warning btn-m" type="submit">Add cafe</button>
-      </form>
-    </div>
-  </div>
+  {{ render_form(form, novalidate=true) }}
   <p><a class="btn btn-warning btn-m" href="{{ url_for('cafes') }}">See all cafes</a></p>
 </div>
 {% endblock %}
