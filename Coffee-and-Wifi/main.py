@@ -64,7 +64,7 @@ class Cafeform(FlaskForm):
                                           ('🔌🔌🔌🔌', '🔌🔌🔌🔌'),
                                           ('🔌🔌🔌🔌🔌', '🔌🔌🔌🔌🔌')],
                                           validators=[DataRequired()])
-    submit = SubmitField("Add", validators=[DataRequired()])
+    submit = SubmitField("➕Add", validators=[DataRequired()])
 
 
 class BaseModel(Base):
