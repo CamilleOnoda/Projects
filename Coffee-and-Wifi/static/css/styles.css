@@ -28,7 +28,7 @@ body {
 background-color: #423F3E;
 color: white;
 font-family: 'Roboto Mono', monospace;
-h1 {
+h1, h2 {
   font-family: 'Sacramento', cursive;
 }
 }
@@ -38,16 +38,8 @@ a {
     text-decoration: none;
 }
 
-/*Form for the add.html*/
-#form {
-  display: inline-grid;
-  width: 400px;
-  margin: auto;
-}
-
-label {
-  font-weight: bold;
-  padding: 5px 0;
+ul li {
+  list-style: none;
 }
 
 /*Buttons on every page*/
