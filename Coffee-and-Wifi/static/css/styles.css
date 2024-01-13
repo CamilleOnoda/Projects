@@ -43,6 +43,12 @@ a {
     text-decoration: none;
 }
 
+#submit {
+  color: black;
+  background-color: #ffc107;
+  width: fit-content;
+}
+
 /*Form style*/
 .form-label {
   font-size: larger;
@@ -61,7 +67,6 @@ ul li {
 /*Buttons on every page*/
 .btn {
   margin-bottom: 10px;
-  margin-top: 10px;
   width: fit-content;
 }
 
