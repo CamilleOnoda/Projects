@@ -3,7 +3,7 @@ from flask_bootstrap import Bootstrap5
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.declarative import declarative_base
 from flask_wtf import FlaskForm
-from wtforms import StringField, SelectField, TextAreaField, SelectMultipleField, widgets
+from wtforms import StringField, SelectField, SelectMultipleField, SubmitField, widgets
 from wtforms.validators import DataRequired
 import os
 
@@ -60,6 +60,7 @@ class Cafeform(FlaskForm):
                                           ('🔌🔌🔌🔌', '🔌🔌🔌🔌'),
                                           ('🔌🔌🔌🔌🔌', '🔌🔌🔌🔌🔌')],
                                           validators=[DataRequired()])
+    submit = SubmitField("Add", validators=[DataRequired()])
 
 
 class BaseModel(Base):
@@ -103,12 +104,13 @@ def cafes():
 def add():
     form = Cafeform()
     if form.validate_on_submit():
+        closed_days = ','.join(form.closed.data)
         new_cafe= Cafe(
             cafe=form.cafe.data,
             city=form.city.data,
             location=form.location.data,
             open_hours=form.open_hours.data,
-            closed=form.closed.data,
+            closed=closed_days,
             sweets=form.sweets.data,
             coffee=form.coffee.data,
             wifi=form.wifi.data,
