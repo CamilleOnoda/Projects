@@ -27,16 +27,20 @@ class Cafeform(FlaskForm):
     city = StringField('City', validators=[DataRequired()])
     location = StringField('Location', validators=[DataRequired()])
     open_hours = StringField('Opening hours', validators=[DataRequired()])
-    closed = SelectMultipleField('Closed', choices=[('Always open', 'Always open'),
-                                                    ('Monday', 'Monday'),
-                                                    ('Tuesday', 'Tuesday'),
-                                                    ('Wednesday', 'Wednesday'),
-                                                    ('Thursday', 'Thursday'),
-                                                    ('Friday', 'Friday'),
-                                                    ('Saturday', 'Saturday'),
-                                                    ('Sunday', 'Sunday')],
-                                                    validators=[DataRequired()],
-                                                    option_widget=widgets.CheckboxInput())
+    closed_choices = [
+        ('Always open', 'Always open'),
+        ('Monday', 'Monday'),
+        ('Tuesday', 'Tuesday'),
+        ('Wednesday', 'Wednesday'),
+        ('Thursday', 'Thursday'),
+        ('Friday', 'Friday'),
+        ('Saturday', 'Saturday'),
+        ('Sunday', 'Sunday'),
+    ]
+    closed = SelectMultipleField('Closed', choices=closed_choices, 
+                                 validators=[DataRequired()], 
+                                 widget=widgets.ListWidget(prefix_label=False), 
+                                 option_widget=widgets.CheckboxInput())
     sweets = SelectField('Sweets', choices=[('🍩', '🍩'),
                                             ('🍩🍩', '🍩🍩'),
                                             ('🍩🍩🍩', '🍩🍩🍩'),
@@ -46,7 +50,7 @@ class Cafeform(FlaskForm):
     coffee = SelectField('Coffee', choices=[('☕', '☕'), ('☕☕', '☕☕'),
                                             ('☕☕☕', '☕☕☕'),
                                             ('☕☕☕☕', '☕☕☕☕'),
-                                            ('☕☕☕☕☕', '☕☕☕☕☕🍩🍩🍩')],
+                                            ('☕☕☕☕☕', '☕☕☕☕☕')],
                                             validators=[DataRequired()])
     wifi = SelectField('Wifi', choices=[('✘', '✘'), ('💪', '💪'),
                                         ('💪💪', '💪💪'),
