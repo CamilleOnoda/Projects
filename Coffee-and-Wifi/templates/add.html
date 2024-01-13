@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Add A New Cafe{% endblock %}
+{% block title %}Add a new cafe{% endblock %}
 
 {% block content %}
 <div class="container">
@@ -9,65 +9,29 @@
       <table class="table table-hover table-dark table-striped .w-auto">
       <tbody>
       <form action="{{ url_for('add') }}" method="POST">
-          <label for="name">Cafe</label>
-            <input autofocus name="cafe" placeholder="cafe" type="text" />
-          <label for="name">City</label>
-            <input autofocus name="city" placeholder="city/prefecture" type="text" />
-          <label>Location</label>
-            <input autofocus name="location" placeholder="URL" type="text">
-          <label>Opening hours</label>
-            <input autofocus name="open_hours" 
-            placeholder="Opening hours (e.g. 8AM - 5PM)" type="text">
-          <label>Closed</label>
-            <select name="closed" multiple>
-            <option disabled selected>Closing days</option>
-            <option value="Always open">Always open</option>
-            <option value="Monday">Monday</option>
-            <option value="Tuesday">Tuesday</option>
-            <option value="Wednesday">Wednesday</option>
-            <option value="Thursday">Thursday</option>
-            <option value="Friday">Friday</option>
-            <option value="Saturday">Saturday</option>
-            <option value="Sunday">Sunday</option>
-            </select>    
-          <label>Sweets</label>
-            <select name="sweets">
-            <option disabled selected>Sweets quality</option>
-            <option value="🍩">🍩</option>
-            <option value="🍩🍩">🍩🍩</option>
-            <option value="🍩🍩🍩">🍩🍩🍩</option>
-            <option value="🍩🍩🍩🍩">🍩🍩🍩🍩🍩</option>
-            <option value="🍩🍩🍩🍩🍩">🍩🍩🍩🍩🍩🍩</option>
-            </select>            
-          <label>Coffee</label>
-            <select name="coffee">
-            <option disabled selected>Coffee quality</option>
-            <option value="☕">☕</option>
-            <option value="☕☕">☕☕</option>
-            <option value="☕☕☕">☕☕☕</option>
-            <option value="☕☕☕☕">☕☕☕☕</option>
-            <option value="☕☕☕☕☕">☕☕☕☕☕</option>
-            </select>
-          <label>Wifi</label>
-            <select name="wifi">
-            <option disabled selected>Wifi strength</option>
-            <option value="✘">✘</option>
-            <option value="💪">💪</option>
-            <option value="💪💪">💪💪</option>
-            <option value="💪💪💪">💪💪💪</option>
-            <option value="💪💪💪💪">💪💪💪💪</option>
-            <option value="💪💪💪💪💪">💪💪💪💪💪</option>
-            </select>
-          <label>Power</label>
-            <select name="power">
-            <option disabled selected>Power socket availability</option>
-            <option value="✘">✘</option>
-            <option value="🔌">🔌</option>
-            <option value="🔌🔌">🔌🔌</option>
-            <option value="🔌🔌🔌">🔌🔌🔌</option>
-            <option value="🔌🔌🔌🔌">🔌🔌🔌🔌</option>
-            <option value="🔌🔌🔌🔌🔌">🔌🔌🔌🔌🔌</option>
-            </select>
+        {{ form.hidden_tag() }}
+        <label for="cafe">Cafe</label>
+        {{ form.cafe(size=32, autofocus=true) }}
+        <label for="city">City</label>
+        {{ form.city(size=32) }}
+        <label for="location">Location</label>
+        {{ form.location(size=32) }}
+        <label for="open_hours">Opening hours</label>
+        {{ form.open_hours(size=32) }}
+        <label>Closed</label>
+        <select name="closed" multiple>
+          {% for value, label in form.closed.choices %}
+            <option value="{{ value }}">{{ label }}</option>
+          {% endfor %}
+        </select>
+        <label>Sweets</label>
+        {{ form.sweets() }}
+        <label>Coffee</label>
+        {{ form.coffee() }}
+        <label>Wifi</label>
+        {{ form.wifi() }}
+        <label>Power</label>
+        {{ form.power() }}
         <button id="btn" class="btn btn-warning btn-m" type="submit">Add cafe</button>
       </form>
     </div>
