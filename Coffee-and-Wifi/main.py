@@ -2,6 +2,9 @@ from flask import Flask, redirect, render_template, url_for, request
 from flask_bootstrap import Bootstrap5
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.declarative import declarative_base
+from flask_wtf import FlaskForm
+from wtforms import StringField, SelectField, TextAreaField, SelectMultipleField, widgets
+from wtforms.validators import DataRequired
 import os
 
 
@@ -11,15 +14,54 @@ SECRET_KEY = os.environ.get("SECRET_KEY") or os.urandom(24)
 app.config['SECRET_KEY'] = SECRET_KEY
 
 
-#Create new database
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///coffee-wifi.db"
 db = SQLAlchemy()
 db.init_app(app)
 
+
 Base = declarative_base()
 
 
-# Create a base model
+class Cafeform(FlaskForm):
+    cafe = StringField('Cafe', validators=[DataRequired()])
+    city = StringField('City', validators=[DataRequired()])
+    location = StringField('Location', validators=[DataRequired()])
+    open_hours = StringField('Opening hours', validators=[DataRequired()])
+    closed = SelectMultipleField('Closed', choices=[('Always open', 'Always open'),
+                                                    ('Monday', 'Monday'),
+                                                    ('Tuesday', 'Tuesday'),
+                                                    ('Wednesday', 'Wednesday'),
+                                                    ('Thursday', 'Thursday'),
+                                                    ('Friday', 'Friday'),
+                                                    ('Saturday', 'Saturday'),
+                                                    ('Sunday', 'Sunday')],
+                                                    validators=[DataRequired()],
+                                                    option_widget=widgets.CheckboxInput())
+    sweets = SelectField('Sweets', choices=[('🍩', '🍩'),
+                                            ('🍩🍩', '🍩🍩'),
+                                            ('🍩🍩🍩', '🍩🍩🍩'),
+                                            ('🍩🍩🍩🍩', '🍩🍩🍩🍩🍩'),
+                                            ('🍩🍩🍩🍩🍩', '🍩🍩🍩🍩🍩🍩')],
+                                            validators=[DataRequired()])
+    coffee = SelectField('Coffee', choices=[('☕', '☕'), ('☕☕', '☕☕'),
+                                            ('☕☕☕', '☕☕☕'),
+                                            ('☕☕☕☕', '☕☕☕☕'),
+                                            ('☕☕☕☕☕', '☕☕☕☕☕🍩🍩🍩')],
+                                            validators=[DataRequired()])
+    wifi = SelectField('Wifi', choices=[('✘', '✘'), ('💪', '💪'),
+                                        ('💪💪', '💪💪'),
+                                        ('💪💪💪', '💪💪💪'),
+                                        ('💪💪💪💪', '💪💪💪💪'),
+                                        ('💪💪💪💪💪', '💪💪💪💪💪')],
+                                        validators=[DataRequired()])
+    power = SelectField('Power', choices=[('✘', '✘'), ('🔌', '🔌'),
+                                          ('🔌🔌', '🔌🔌'),
+                                          ('🔌🔌🔌', '🔌🔌🔌'),
+                                          ('🔌🔌🔌🔌', '🔌🔌🔌🔌'),
+                                          ('🔌🔌🔌🔌🔌', '🔌🔌🔌🔌🔌')],
+                                          validators=[DataRequired()])
+
+
 class BaseModel(Base):
     __abstract__ = True
     __table_args__ = {
@@ -28,7 +70,6 @@ class BaseModel(Base):
     }
 
 
-# Create table model
 class Cafe(BaseModel, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     cafe = db.Column(db.String(250), unique=True, nullable=False)
@@ -60,20 +101,23 @@ def cafes():
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
-    if request.method == 'POST':
-          new_cafe = Cafe(cafe=request.form["cafe"],
-                          city=request.form["city"],
-                          location=request.form["location"],
-                          open_hours=request.form["open_hours"],
-                          closed=','.join(request.form.getlist("closed")),
-                          sweets=request.form["sweets"],
-                          coffee=request.form["coffee"],
-                          wifi=request.form["wifi"],
-                          power=request.form["power"])
-          db.session.add(new_cafe)
-          db.session.commit()
-          return redirect(url_for('cafes'))
-    return render_template('add.html')
+    form = Cafeform()
+    if form.validate_on_submit():
+        new_cafe= Cafe(
+            cafe=form.cafe.data,
+            city=form.city.data,
+            location=form.location.data,
+            open_hours=form.open_hours.data,
+            closed=form.closed.data,
+            sweets=form.sweets.data,
+            coffee=form.coffee.data,
+            wifi=form.wifi.data,
+            power=form.power.data
+        )
+        db.session.add(new_cafe)
+        db.session.commit()
+        return redirect(url_for('cafes'))
+    return render_template('add.html', form=form)
 
 
 @app.route('/delete')
