@@ -28,9 +28,14 @@ body {
 background-color: #423F3E;
 color: white;
 font-family: 'Roboto Mono', monospace;
+}
+
 h1, h2 {
   font-family: 'Sacramento', cursive;
 }
+
+h2 {
+  text-align: center;
 }
 
 a {
@@ -38,19 +43,26 @@ a {
     text-decoration: none;
 }
 
+/*Form style*/
+.form-label {
+  font-size: larger;
+}
+
 ul li {
   list-style: none;
+}
+
+.col-sm-12 {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 /*Buttons on every page*/
 .btn {
   margin-bottom: 10px;
   margin-top: 10px;
-}
-
-/*Add and Edit buttons*/
-#btn {
-  width: 111px;
+  width: fit-content;
 }
 
 /* Cafes list: center headers vertically and horizontally*/
