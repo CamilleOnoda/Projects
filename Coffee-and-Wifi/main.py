@@ -64,7 +64,7 @@ class Cafeform(FlaskForm):
                                           ('🔌🔌🔌🔌', '🔌🔌🔌🔌'),
                                           ('🔌🔌🔌🔌🔌', '🔌🔌🔌🔌🔌')],
                                           validators=[DataRequired()])
-    submit = SubmitField("➕ Add", validators=[DataRequired()])
+    submit = SubmitField("➕ Confirm", validators=[DataRequired()])
 
 
 class BaseModel(Base):
@@ -126,6 +126,36 @@ def add():
     return render_template('add.html', form=form)
 
 
+@app.route('/edit', methods=['GET', 'POST'])
+def edit():
+    cafe_to_edit_id = request.args.get('id')
+    cafe = db.get_or_404(Cafe, cafe_to_edit_id)
+    edit_form = Cafeform(
+        cafe = cafe.cafe,
+        city = cafe.city,
+        location = cafe.location,
+        open_hours = cafe.open_hours,
+        closed = cafe.closed,
+        sweets = cafe.sweets,
+        coffee = cafe.coffee,
+        wifi = cafe.wifi,
+        power = cafe.power
+    )
+    if edit_form.validate_on_submit():
+        cafe.cafe = edit_form.cafe.data
+        cafe.city = edit_form.city.data
+        cafe.location = edit_form.location.data
+        cafe.open_hours = edit_form.open_hours.data
+        cafe.closed = ','.join(edit_form.closed.data)
+        cafe.sweets = edit_form.sweets.data
+        cafe.coffee = edit_form.coffee.data
+        cafe.wifi = edit_form.wifi.data
+        cafe.power = edit_form.power.data
+        db.session.commit()
+        return redirect(url_for('cafes'))
+    return render_template('edit.html', form=edit_form)
+
+
 @app.route('/delete')
 def delete():
     cafe_id = request.args.get('id')
@@ -133,27 +163,6 @@ def delete():
     db.session.delete(cafe_to_delete)
     db.session.commit()
     return redirect(url_for('cafes'))
-
-
-@app.route('/edit', methods=['GET', 'POST'])
-def edit():
-    if request.method == 'POST':
-        cafe_id = request.form['id']
-        cafe_to_edit = db.get_or_404(Cafe, cafe_id)
-        cafe_to_edit.cafe = request.form["cafe"]
-        cafe_to_edit.city = request.form["city"]
-        cafe_to_edit.location = request.form["location"]
-        cafe_to_edit.open_hours = request.form["open_hours"]
-        cafe_to_edit.closed = ','.join(request.form.getlist("closed"))
-        cafe_to_edit.sweets = request.form["sweets"]
-        cafe_to_edit.coffee = request.form["coffee"]
-        cafe_to_edit.wifi = request.form["wifi"]
-        cafe_to_edit.power = request.form["power"]
-        db.session.commit()
-        return redirect(url_for('cafes'))
-    cafe_id = request.args.get('id')
-    cafe_selected = db.get_or_404(Cafe, cafe_id)
-    return render_template('edit.html', cafe=cafe_selected)
 
 
 if __name__ == '__main__':
