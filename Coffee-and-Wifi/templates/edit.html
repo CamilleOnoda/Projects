@@ -1,130 +1,18 @@
 {% extends 'base.html' %}
+{% from 'bootstrap5/form.html' import render_form %}
 {% block title %}Edit{% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-      <div id="form" class="col-sm-12 col-md-8">
-        <h1>Edit</h1>
-        <table class="table table-hover table-dark table-striped .w-auto">
-        <tbody>
-            <form action="{{ url_for('edit') }}" method="POST">
-                <input hidden="hidden"name="id"value="{{cafe.id}}">
-            <label for="name">Cafe</label>
-                <input autofocus name="cafe"value="{{cafe.cafe}}"type="text" />
-            <label for="name">City</label>
-                <input autofocus name="city"value="{{cafe.city}}"type="text" />
-            <label>Location</label>
-                <input autofocus name="location"value="{{cafe.location}}"type="text">
-            <label>Opening hours</label>
-                <input autofocus name="open_hours"value="{{cafe.open_hours}}"type="text">
-            <label>Closed</label>
-                <select name="closed"value="{{cafe.closed}}"multiple>
-                <option disabled selected>Closing days</option>
-                <option value="Always open" 
-                {% if "Always open" in cafe.closed %}
-                selected{% endif %}>Always open</option>
-                <option value="Monday" {% if "Monday" in cafe.closed %}
-                selected{% endif %}>Monday</option>
-                <option value="Tuesday" {% if "Tuesday" in cafe.closed %}
-                selected{% endif %}>Tuesday</option>
-                <option value="Wednesday" {% if "Wednesday" in cafe.closed %}
-                selected{% endif %}>Wednesday</option>
-                <option value="Thursday" {% if "Thursday" in cafe.closed %}
-                selected{% endif %}>Thursday</option>
-                <option value="Friday" {% if "Friday" in cafe.closed %}
-                selected{% endif %}>Friday</option>
-                <option value="Saturday" {% if "Saturday" in cafe.closed %}
-                selected{% endif %}>Saturday</option>
-                <option value="Sunday" {% if "Sunday" in cafe.closed %}
-                selected{% endif %}>Sunday</option>
-                </select>    
-            <label>Sweets</label>
-                <select name="sweets" value="{{cafe.sweets}}">
-                <option disabled selected>Sweets quality</option>
-                <option value="🍩"
-                {% if "🍩" in cafe.sweets %}
-                selected{% endif %}>🍩</option>
-                <option value="🍩🍩"
-                {% if "🍩🍩" in cafe.sweets %}
-                selected{% endif %}>🍩🍩</option>
-                <option value="🍩🍩🍩"
-                {% if "🍩🍩🍩" in cafe.sweets %}
-                selected{% endif %}>🍩🍩🍩</option>
-                <option value="🍩🍩🍩🍩"
-                {% if "🍩🍩🍩🍩" in cafe.sweets %}
-                selected{% endif %}>🍩🍩🍩🍩</option>
-                <option value="🍩🍩🍩🍩🍩"
-                {% if "🍩🍩🍩🍩🍩" in cafe.sweets %}
-                selected{% endif %}>🍩🍩🍩🍩🍩</option>
-                </select>            
-            <label>Coffee</label>
-                <select name="coffee" value="{{cafe.coffee}}">
-                <option disabled selected>Coffee quality</option>
-                <option value="☕"
-                {% if "☕" in cafe.coffee %}
-                selected{% endif %}>☕</option>
-                <option value="☕☕"
-                {% if "☕☕" in cafe.coffee %}
-                selected{% endif %}>☕☕</option>
-                <option value="☕☕☕"
-                {% if "☕☕☕" in cafe.coffee %}
-                selected{% endif %}>☕☕☕</option>
-                <option value="☕☕☕☕"
-                {% if "☕☕☕☕" in cafe.coffee %}
-                selected{% endif %}>☕☕☕☕</option>
-                <option value="☕☕☕☕☕"
-                {% if "☕☕☕☕☕" in cafe.coffee %}
-                selected{% endif %}>☕☕☕☕☕</option>
-                </select> 
-            <label>Wifi</label>
-                <select name="wifi" value="{{cafe.wifi}}">
-                <option disabled selected>Wifi strength</option>
-                <option value="✘"
-                {% if "✘" in cafe.wifi %}
-                selected{% endif %}>✘</option>
-                <option value="💪"
-                {% if "💪" in cafe.wifi %}
-                selected{% endif %}>💪</option>
-                <option value="💪💪"
-                {% if "💪💪" in cafe.wifi %}
-                selected{% endif %}>💪💪</option>
-                <option value="💪💪💪"
-                {% if "💪💪💪" in cafe.wifi %}
-                selected{% endif %}>💪💪💪</option>
-                <option value="💪💪💪💪"
-                {% if "💪💪💪💪" in cafe.wifi %}
-                selected{% endif %}>💪💪💪💪</option>
-                <option value="💪💪💪💪💪"
-                {% if "💪💪💪💪💪" in cafe.wifi %}
-                selected{% endif %}>💪💪💪💪💪</option>
-                </select> 
-            <label>Power</label>
-                <select name="power" value="{{cafe.power}}">
-                <option disabled selected>Power socket availability</option>
-                <option value="✘"
-                {% if "✘" in cafe.power %}
-                selected{% endif %}>✘</option>
-                <option value="🔌"
-                {% if "🔌" in cafe.power %}
-                selected{% endif %}>🔌</option>
-                <option value="🔌🔌"
-                {% if "🔌🔌" in cafe.power %}
-                selected{% endif %}>🔌🔌</option>
-                <option value="🔌🔌🔌"
-                {% if "🔌🔌🔌" in cafe.power %}
-                selected{% endif %}>🔌🔌🔌</option>
-                <option value="🔌🔌🔌🔌"
-                {% if "🔌🔌🔌🔌" in cafe.power %}
-                selected{% endif %}>🔌🔌🔌🔌</option>
-                <option value="🔌🔌🔌🔌🔌"
-                {% if "🔌🔌🔌🔌🔌" in cafe.power %}
-                selected{% endif %}>🔌🔌🔌🔌🔌</option>
-                </select> 
-            <button id="btn" class="btn btn-warning btn-m" type="submit">✔️ Save changes</button>
-            </form>
-        </div>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h2 class="mb-4">Edit</h2>
+        {{ render_form(form, novalidate=true) }}
+        <p class="mt-3">
+        <a class="btn btn-warning btn-m" href="{{ url_for('cafes') }}">
+            👀 See all cafes</a>
+        </p>
+      </div>
     </div>
-        <p><a class="btn btn-warning btn-m" href="{{ url_for('cafes') }}">👀 See all cafes</a></p>
 </div>
 {% endblock %}
