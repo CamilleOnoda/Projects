@@ -26,7 +26,7 @@ class Cafeform(FlaskForm):
     cafe = StringField('Cafe', validators=[DataRequired()])
     city = StringField('City', validators=[DataRequired()])
     location = StringField('Location', validators=[DataRequired()])
-    open_hours = StringField('Opening hours', validators=[DataRequired()])
+    open_hours = StringField('Opening hours (e.g. 8am - 5pm)', validators=[DataRequired()])
     closed_choices = [
         ('Always open', 'Always open'),
         ('Monday', 'Monday'),
