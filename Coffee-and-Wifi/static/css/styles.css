@@ -111,8 +111,8 @@ ul li {
 }
 
 /*Remove the border from the last 2 columns*/
-.table th:nth-last-child(2),
-.table td:nth-last-child(2) {
+.table th:last-child,
+.table td:last-child {
   border-right: none;
 }
 
