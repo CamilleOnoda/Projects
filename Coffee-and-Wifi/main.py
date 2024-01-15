@@ -130,12 +130,13 @@ def add():
 def edit():
     cafe_to_edit_id = request.args.get('id')
     cafe = db.get_or_404(Cafe, cafe_to_edit_id)
+    selected_closed_days = cafe.closed.split()
     edit_form = Cafeform(
         cafe = cafe.cafe,
         city = cafe.city,
         location = cafe.location,
         open_hours = cafe.open_hours,
-        closed = cafe.closed,
+        closed = selected_closed_days,
         sweets = cafe.sweets,
         coffee = cafe.coffee,
         wifi = cafe.wifi,
