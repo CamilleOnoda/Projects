@@ -108,7 +108,7 @@ def cafes():
 def add():
     form = Cafeform()
     if form.validate_on_submit():
-        closed_days = ','.join(form.closed.data)
+        closed_days = ' '.join(form.closed.data)
         new_cafe= Cafe(
             cafe=form.cafe.data,
             city=form.city.data,
@@ -146,7 +146,7 @@ def edit():
         cafe.city = edit_form.city.data
         cafe.location = edit_form.location.data
         cafe.open_hours = edit_form.open_hours.data
-        cafe.closed = ','.join(edit_form.closed.data)
+        cafe.closed = ' '.join(edit_form.closed.data)
         cafe.sweets = edit_form.sweets.data
         cafe.coffee = edit_form.coffee.data
         cafe.wifi = edit_form.wifi.data
