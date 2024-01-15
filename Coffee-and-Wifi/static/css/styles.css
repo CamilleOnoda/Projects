@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /*Home page*/
 .jumbotron {
   background: linear-gradient(-45deg, #FF6D24, #4E413B, #857671);
@@ -48,7 +54,8 @@ margin: 0;
 
 span {
   font-family: 'Sacramento', cursive;
-  font-size: 2rem; 
+  font-size: 2rem;
+  margin-right: 30px;
 }
 
 
