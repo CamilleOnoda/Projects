@@ -1,9 +1,7 @@
 {% extends 'base.html' %}
-{% block title %}Cafes{% endblock %}
 
 {% block content %}
 <div class="container">
-  <h1 style="text-align: center;">Cafe crawl ~ Local finds</h1>
   <div class="row">
     <div class="col-sm-12">
 	    <table class="table table-hover table-dark table-striped table-responsive d-block d-lg-table">
@@ -46,10 +44,11 @@
                 <td>{{ cafe.coffee }}</td>
                 <td>{{ cafe.wifi }}</td>
                 <td>{{ cafe.power }}</td>
-                <td><a class="btn btn-warning btn-m" href="{{ url_for('delete', id=cafe.id) }}">
-                  Delete</a>
-                <a class="btn btn-warning btn-m" href="{{ url_for('edit', id=cafe.id) }}">
-                  Edit</a></td>
+                <td>
+                  <a class="btn btn-warning btn-m" href="{{ url_for('edit', id=cafe.id) }}">
+                    Edit</a>
+                  <a class="btn btn-warning btn-m" href="{{ url_for('delete', id=cafe.id) }}">
+                  Delete</a></td>
               </tr>
             {% endfor %}
           </tbody>
