@@ -23,16 +23,34 @@
   }
 }
 
-/*Applied to all pages*/
-body {
-background-color: #423F3E;
-color: white;
-font-family: 'Roboto Mono', monospace;
+.d-flex {
+  font-family: 'Roboto Mono', monospace;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-h1, h2 {
-  font-family: 'Sacramento', cursive;
+.nav-link {
+  color: white;
 }
+
+.nav-link:hover {
+  font-weight: bold;
+  color: black;
+}
+
+/*Applied to all pages*/
+body {
+color: white;
+font-family: 'Roboto Mono', monospace;
+background: linear-gradient(-45deg, #FF6D24, #4E413B, #857671);
+margin: 0;
+}
+
+span {
+  font-family: 'Sacramento', cursive;
+  font-size: 2rem; 
+}
+
 
 h2 {
   text-align: center;
@@ -43,7 +61,9 @@ a {
     text-decoration: none;
 }
 
-#submit {
+#submit,
+.nav-pills .nav-link.active
+{
   color: black;
   background-color: #ffc107;
   width: fit-content;
@@ -66,13 +86,17 @@ ul li {
 
 /*Buttons on every page*/
 .btn {
-  font-size: 15px;
+  font-size: 17px;
   margin-bottom: 10px;
   width: fit-content;
 }
 
 .btn:hover {
   font-weight: bold;
+}
+
+.table {
+  margin-top: 100px;
 }
 
 /* Cafes list: center headers vertically and horizontally*/
