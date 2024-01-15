@@ -41,11 +41,11 @@ class Cafeform(FlaskForm):
                                  validators=[DataRequired()], 
                                  widget=widgets.ListWidget(prefix_label=False), 
                                  option_widget=widgets.CheckboxInput())
-    sweets = SelectField('Sweets', choices=[('🍩', '🍩'),
-                                            ('🍩🍩', '🍩🍩'),
-                                            ('🍩🍩🍩', '🍩🍩🍩'),
-                                            ('🍩🍩🍩🍩', '🍩🍩🍩🍩🍩'),
-                                            ('🍩🍩🍩🍩🍩', '🍩🍩🍩🍩🍩🍩')],
+    sweets = SelectField('Sweets', choices=[('🧁', '🧁'),
+                                            ('🧁🧁', '🧁🧁'),
+                                            ('🧁🧁🧁', '🧁🧁🧁'),
+                                            ('🧁🧁🧁🧁', '🧁🧁🧁🧁'),
+                                            ('🧁🧁🧁🧁🧁', '🧁🧁🧁🧁🧁')],
                                             validators=[DataRequired()])
     coffee = SelectField('Coffee', choices=[('☕', '☕'), ('☕☕', '☕☕'),
                                             ('☕☕☕', '☕☕☕'),
@@ -58,13 +58,13 @@ class Cafeform(FlaskForm):
                                         ('💪💪💪💪', '💪💪💪💪'),
                                         ('💪💪💪💪💪', '💪💪💪💪💪')],
                                         validators=[DataRequired()])
-    power = SelectField('Power', choices=[('✘', '✘'), ('🔌', '🔌'),
-                                          ('🔌🔌', '🔌🔌'),
-                                          ('🔌🔌🔌', '🔌🔌🔌'),
-                                          ('🔌🔌🔌🔌', '🔌🔌🔌🔌'),
-                                          ('🔌🔌🔌🔌🔌', '🔌🔌🔌🔌🔌')],
+    power = SelectField('Power', choices=[('✘', '✘'), ('⚡', '⚡'),
+                                          ('⚡⚡', '⚡⚡'),
+                                          ('⚡⚡⚡', '⚡⚡⚡'),
+                                          ('⚡⚡⚡⚡', '⚡⚡⚡⚡'),
+                                          ('⚡⚡⚡⚡⚡', '⚡⚡⚡⚡⚡')],
                                           validators=[DataRequired()])
-    submit = SubmitField("➕ Confirm", validators=[DataRequired()])
+    submit = SubmitField("✅ Confirm", validators=[DataRequired()])
 
 
 class BaseModel(Base):
@@ -130,7 +130,10 @@ def add():
 def edit():
     cafe_to_edit_id = request.args.get('id')
     cafe = db.get_or_404(Cafe, cafe_to_edit_id)
-    selected_closed_days = cafe.closed.split()
+    if cafe.closed == "Always open":
+        selected_closed_days = ['Always open']
+    else:
+        selected_closed_days = cafe.closed.split()
     edit_form = Cafeform(
         cafe = cafe.cafe,
         city = cafe.city,
