@@ -66,6 +66,7 @@ ul li {
 
 /*Buttons on every page*/
 .btn {
+  font-size: 15px;
   margin-bottom: 10px;
   width: fit-content;
 }
@@ -109,9 +110,9 @@ ul li {
   border-right: 1px solid #E38259;
 }
 
-/*Remove the border from the last column*/
-.table th:last-child,
-.table td:last-child {
+/*Remove the border from the last 2 columns*/
+.table th:nth-last-child(2),
+.table td:nth-last-child(2) {
   border-right: none;
 }
 
@@ -125,6 +126,13 @@ ul li {
 .table td {
   text-align: center;
   vertical-align: middle;
+}
+
+/*Reduce column widths*/
+table th.multiline-column,
+table td.multiline-column {
+  overflow: hidden;
+  white-space: normal;
 }
 
 /*Screen below 1000px*/
@@ -146,5 +154,11 @@ ul li {
     width: 1px;
     background-color: #E38259;
 
+  }
+  .table th,
+  .table td,
+  .btn {
+    padding: 5px;
+    font-size: 12px;
   }
 }
