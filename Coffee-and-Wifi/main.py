@@ -41,11 +41,11 @@ class Cafeform(FlaskForm):
                                  validators=[DataRequired()], 
                                  widget=widgets.ListWidget(prefix_label=False), 
                                  option_widget=widgets.CheckboxInput())
-    sweets = SelectField('Sweets', choices=[('🧁', '🧁'),
-                                            ('🧁🧁', '🧁🧁'),
-                                            ('🧁🧁🧁', '🧁🧁🧁'),
-                                            ('🧁🧁🧁🧁', '🧁🧁🧁🧁'),
-                                            ('🧁🧁🧁🧁🧁', '🧁🧁🧁🧁🧁')],
+    sweets = SelectField('Sweets', choices=[('🍰', '🍰'),
+                                            ('🍰🍰', '🍰🍰'),
+                                            ('🍰🍰🍰', '🍰🍰🍰'),
+                                            ('🍰🍰🍰🍰', '🍰🍰🍰🍰'),
+                                            ('🍰🍰🍰🍰🍰', '🍰🍰🍰🍰🍰')],
                                             validators=[DataRequired()])
     coffee = SelectField('Coffee', choices=[('☕', '☕'), ('☕☕', '☕☕'),
                                             ('☕☕☕', '☕☕☕'),
