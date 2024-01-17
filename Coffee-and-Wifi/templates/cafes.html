@@ -9,7 +9,7 @@
     <li class="nav-item"><a href="{{url_for('logout')}}" class="nav-link">Log out</a></li>
   </ul>
 </header>
-<h3 class="title">Hi <span>{{name}}!</span></h3>
+<h3 class="title">Hi <span>{{name.title()}}!</span></h3>
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
@@ -56,8 +56,11 @@
                 <td>
                   <a class="btn btn-warning btn-m" href="{{ url_for('edit', id=cafe.id) }}">
                     Edit</a>
-                  <a class="btn btn-warning btn-m" href="{{ url_for('delete', id=cafe.id) }}">
-                  Delete</a></td>
+                    {% if current_user.is_authenticated and current_user.is_admin %}
+                    <a class="btn btn-warning btn-m" href="{{ url_for('delete', id=cafe.id) }}">
+                    Delete</a>
+                    {% endif %}
+                </td>
               </tr>
             {% endfor %}
           </tbody>
