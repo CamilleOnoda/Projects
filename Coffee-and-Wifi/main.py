@@ -112,12 +112,6 @@ with app.app_context():
     db.create_all()
 
 
-# Flask routes
-@app.route("/")
-def home():
-    return render_template("index.html")
-
-
 @app.route('/register', methods=['GET','POST'])
 def register():
     form = RegisterForm()
@@ -126,7 +120,7 @@ def register():
         result = db.session.execute(db.select(User).where(User.username == username))
         user_exist = result.scalar()
         if user_exist:
-            flash("This username already exist. Please choose another one.")
+            flash("This username already exist. Choose another one or log in instead.")
             return redirect(url_for('register'))
         
         hashed_salted_password = generate_password_hash(form.password.data,
@@ -143,7 +137,40 @@ def register():
     return render_template('register.html', form=form)
 
 
+@app.route('/login', methods=['GET','POST'])
+def login():
+    form = RegisterForm()
+    if form.validate_on_submit():
+        username = form.username.data
+        password = form.password.data
+        result = db.session.execute(db.select(User).where(User.username == username))
+        user = result.scalar()
+        if not user:
+            flash("This username does not exist. Register instead.")
+            return redirect(url_for('register'))
+        elif not check_password_hash(user.password, password):
+            flash("Incorrect password. Please try again.")
+        else:
+            login_user(user)
+            session['name'] = user.username
+            return redirect(url_for('cafes'))
+    return render_template('login.html', form=form)
+
+
+@app.route('/logout', methods=['GET','POST'])
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
+
+
+@app.route("/")
+def home():
+    return render_template("index.html", logged_in=current_user.is_authenticated)
+
+
 @app.route('/cafes')
+@login_required
 def cafes():
     name = current_user.username if current_user.is_authenticated else ''
     cafes_list = list(db.session.execute(db.select(Cafe).order_by(Cafe.city)).scalars())
@@ -151,6 +178,7 @@ def cafes():
 
 
 @app.route('/add', methods=['GET', 'POST'])
+@login_required
 def add():
     form = Cafeform()
     if form.validate_on_submit():
@@ -173,6 +201,7 @@ def add():
 
 
 @app.route('/edit', methods=['GET', 'POST'])
+@login_required
 def edit():
     cafe_to_edit_id = request.args.get('id')
     cafe = db.get_or_404(Cafe, cafe_to_edit_id)
@@ -207,6 +236,7 @@ def edit():
 
 
 @app.route('/delete')
+@login_required
 def delete():
     cafe_id = request.args.get('id')
     cafe_to_delete = db.get_or_404(Cafe, cafe_id)
