@@ -1,12 +1,12 @@
-from codecs import unicode_escape_decode
-from flask import Flask, redirect, render_template, url_for, request
+from flask import Flask, redirect, render_template, url_for, request, flash, session
 from flask_bootstrap import Bootstrap5
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.declarative import declarative_base
 from flask_wtf import FlaskForm
-from wtforms import StringField, SelectField, SelectMultipleField, SubmitField, widgets
+from wtforms import PasswordField, StringField, SelectField, SelectMultipleField, SubmitField, widgets
 from wtforms.validators import DataRequired
-from flask_login import LoginManager, UserMixin
+from flask_login import LoginManager, UserMixin, login_user, login_required, current_user, logout_user
+from werkzeug.security import generate_password_hash, check_password_hash
 import os
 
 
@@ -28,6 +28,12 @@ login_manager.init_app(app)
 @login_manager.user_loader
 def load_user(user_id):
     return db.get_or_404(User, user_id)
+
+
+class RegisterForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField("Let me in!", validators=[DataRequired()])
 
 
 class Cafeform(FlaskForm):
@@ -112,10 +118,41 @@ def home():
     return render_template("index.html")
 
 
+@app.route('/register', methods=['GET','POST'])
+def register():
+    form = RegisterForm()
+    if form.validate_on_submit():
+        print("Form validated successfully.")
+        username = form.username.data.title()
+        print(username)
+        result = db.session.execute(db.select(User).where(User.username == username))
+        user_exist = result.scalar()
+        print(user_exist)
+        if user_exist:
+            flash("This username already exist. Please choose another one.")
+            return redirect(url_for('register'))
+        
+        hashed_salted_password = generate_password_hash(form.password.data,
+                                                        method='pbkdf2:sha256',
+                                                        salt_length=8)
+        new_user = User(password = hashed_salted_password,
+                        username = form.username.data.title())
+
+        db.session.add(new_user)
+        db.session.commit()
+        login_user(new_user)
+        session['name'] = new_user.username
+        return redirect(url_for('cafes'))
+    
+    print("Form not submitted or validated.")
+    return render_template('register.html', form=form)
+
+
 @app.route('/cafes')
 def cafes():
+    name = current_user.username if current_user.is_authenticated else ''
     cafes_list = list(db.session.execute(db.select(Cafe).order_by(Cafe.city)).scalars())
-    return render_template('cafes.html', cafes_list=cafes_list)
+    return render_template('cafes.html', cafes_list=cafes_list, name=name, logged_in=True)
 
 
 @app.route('/add', methods=['GET', 'POST'])
