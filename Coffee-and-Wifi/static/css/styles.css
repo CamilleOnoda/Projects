@@ -16,7 +16,7 @@ html {
   text-align: center;
 }
 .home-container {
-  background: linear-gradient(-200deg, #f76116, #594e49, #857671);
+  background: linear-gradient(-200deg, #f76116, #594e49, #6e6561);
   background-size: 180% 180%;
   animation: gradient-animation 18s ease infinite;
   display: flex;
@@ -133,7 +133,7 @@ ul li {
 }
 
 .table {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 /* Cafes list: center headers vertically and horizontally*/
