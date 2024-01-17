@@ -40,6 +40,19 @@ html {
     background-position: 0% 50%;
   }
 }
+
+/*All pages except home page*/
+.bg-container {
+  background: linear-gradient(-185deg, #f67e43, #4E413B, #857671);
+  background-size: 180% 180%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  color: white;
+}
+
 /*Header*/
 .d-flex {
   font-family: 'Roboto Mono', monospace;
@@ -60,17 +73,6 @@ html {
   color: black;
 }
 
-/*Edit and Add pages*/
-.bg-container {
-  background: linear-gradient(-185deg, #f67e43, #4E413B, #857671);
-  background-size: 180% 180%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  min-height: 100vh;
-  color: white;
-}
 
 body {
   width: 100%;
