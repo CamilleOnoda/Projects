@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 {% from 'bootstrap5/form.html' import render_form %}
 {% block content %}
+<div class="bg-container">
 <header class="d-flex justify-content-center py-3">
   <span>Cafe Crawl</span>
   <ul class="nav nav-pills">
     <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">About</a></li>
-    <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
     <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+    <li class="nav-item"><a href="#" class="nav-link">Login</a></li>
+    <li class="nav-item"><a href="#" class="nav-link">Register</a></li>
   </ul>
 </header>
 <div class="img">
@@ -24,5 +26,6 @@
         </p>
       </div>
     </div>
+</div>
 </div>
 {% endblock %}
