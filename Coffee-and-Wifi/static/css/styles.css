@@ -10,11 +10,19 @@ html {
 
 /*Home page*/
 .jumbotron {
-  background: linear-gradient(-45deg, #FF6D24, #4E413B, #857671);
+  position: absolute;
+  top: 50%;
+  transform: translate(0%, -50%);
+  text-align: center;
+}
+.home-container {
+  background: linear-gradient(-200deg, #f76116, #594e49, #857671);
   background-size: 180% 180%;
   animation: gradient-animation 18s ease infinite;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   margin: 0;
   height: 100vh;
   color: white;
@@ -52,12 +60,23 @@ html {
   color: black;
 }
 
+/*Edit and Add pages*/
+.bg-container {
+  background: linear-gradient(-185deg, #f67e43, #4E413B, #857671);
+  background-size: 180% 180%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  color: white;
+}
+
 body {
   width: 100%;
   height: 100%;
   color: white;
   font-family: 'Roboto Mono', monospace;
-  background: linear-gradient(-45deg, #FF6D24, #4E413B, #857671);
 }
 
 span {
@@ -112,7 +131,7 @@ ul li {
 }
 
 .table {
-  margin-top: 50px;
+  margin-top: 100px;
 }
 
 /* Cafes list: center headers vertically and horizontally*/
@@ -174,6 +193,7 @@ table td.multiline-column {
   overflow: hidden;
   white-space: normal;
 }
+
 
 /*Screen below 1000px*/
 @media (max-width: 1000px) {
