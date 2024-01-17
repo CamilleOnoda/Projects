@@ -1,3 +1,4 @@
+from codecs import unicode_escape_decode
 from flask import Flask, redirect, render_template, url_for, request
 from flask_bootstrap import Bootstrap5
 from flask_sqlalchemy import SQLAlchemy
@@ -5,6 +6,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, SelectMultipleField, SubmitField, widgets
 from wtforms.validators import DataRequired
+from flask_login import LoginManager, UserMixin
 import os
 
 
@@ -19,7 +21,13 @@ db = SQLAlchemy()
 db.init_app(app)
 
 
-Base = declarative_base()
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return db.get_or_404(User, user_id)
 
 
 class Cafeform(FlaskForm):
@@ -66,6 +74,7 @@ class Cafeform(FlaskForm):
                                           validators=[DataRequired()])
     submit = SubmitField("✅ Confirm", validators=[DataRequired()])
 
+Base = declarative_base()
 
 class BaseModel(Base):
     __abstract__ = True
@@ -86,6 +95,11 @@ class Cafe(BaseModel, db.Model):
     coffee = db.Column(db.String(250), nullable=False)
     wifi = db.Column(db.String(250), nullable=False)
     power = db.Column(db.String(250), nullable=False)
+
+class User(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(100), unique=True)
+    password = db.Column(db.String(100))
 
 
 with app.app_context():
