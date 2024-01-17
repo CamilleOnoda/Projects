@@ -122,12 +122,9 @@ def home():
 def register():
     form = RegisterForm()
     if form.validate_on_submit():
-        print("Form validated successfully.")
         username = form.username.data.title()
-        print(username)
         result = db.session.execute(db.select(User).where(User.username == username))
         user_exist = result.scalar()
-        print(user_exist)
         if user_exist:
             flash("This username already exist. Please choose another one.")
             return redirect(url_for('register'))
@@ -143,8 +140,6 @@ def register():
         login_user(new_user)
         session['name'] = new_user.username
         return redirect(url_for('cafes'))
-    
-    print("Form not submitted or validated.")
     return render_template('register.html', form=form)
 
 
