@@ -105,6 +105,12 @@ a {
   width: fit-content;
 }
 
+img {
+  display: block;
+  width: 70vw;
+  height: 500px;
+}
+
 
 /*Form style*/
 .form-label {
@@ -223,9 +229,16 @@ table td.multiline-column {
     padding: 5px;
     font-size: 12px;
   }
+}
+
+@media (max-width: 730px) {
   img {
-    max-width: 400px;
-    max-height: 350px;
-    overflow: hidden;
+    height: 300px;
+  }
+}
+
+@media (max-width: 500px) {
+  img {
+    height: 200px;
   }
 }
