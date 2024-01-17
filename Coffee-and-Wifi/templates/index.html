@@ -6,9 +6,12 @@
   <ul class="nav nav-pills">
     <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">About</a></li>
     <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
-    <li class="nav-item"><a href="#" class="nav-link">Login</a></li>
-    <li class="nav-item"><a href="#" class="nav-link">Register</a></li>
-  </ul>
+    {% if not logged_in %}
+    <li class="nav-item"><a href="{{url_for('login')}}" class="nav-link">Login</a></li>
+    <li class="nav-item"><a href="{{url_for('register')}}" class="nav-link">Register</a></li>
+    {% else %}
+    <li class="nav-item"><a href="{{url_for('logout')}}" class="nav-link">Log out</a></li>
+    {% endif %}
 </header>
 <div class="jumbotron text-center">
     <div class="container">
@@ -18,7 +21,9 @@
       <hr class="my-4">
       <p>You've found the right place! Checkout my collection of cafes with data on 
         power socket availability, wifi speed, coffee and sweets quality.</p>
+        {% if logged_in %}
       <a class="btn btn-warning btn-lg" href="{{ url_for('cafes') }}" role="button">Show Me!</a>
+      {% endif %}
     </div>
 </div>
 </div>
