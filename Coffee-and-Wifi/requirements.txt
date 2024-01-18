@@ -1,5 +1,10 @@
 Bootstrap_Flask==2.3.3
+Flask-Bootstrap==3.3.7.1
+Flask-Login==0.6.3
+Flask-SQLAlchemy==3.1.1
+Flask-WTF==1.2.1
 Flask==3.0.0
 WTForms==3.1.1
-Flask_WTF==1.2.1
+Jinja2==3.1.2
 Werkzeug=3.0.1
+SQLAlchemy==2.0.24
