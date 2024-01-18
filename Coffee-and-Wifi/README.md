@@ -12,7 +12,7 @@
 for managing information about cafes. The application allows users to view a
 list of cafes, add new cafes, edit existing cafe details, and delete cafes
 from the database.</p>
-<img src="static/images/homePage.png" width="600">
+<img src="static/images/homepage.png" width="600">
 <img src="static/images/cafes-list.png" width="600">
 
 <h2>Built with</h2>
