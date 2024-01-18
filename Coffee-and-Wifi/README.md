@@ -7,6 +7,7 @@
 </head>
 <body>
 <h1 style="text-align:center">Welcome!</h1>
+<p>Thank you for exploring my project! This app is born out of my love for road cycling and the joy of discovering cyclist-friendly cafes. I'm committed to maintaining and enhancing this app, making sure that it remains accessible to fellow cyclists eager to share their favorite cafes. Their feedback is invaluable, and I will continue improving usability and adding new features based on their suggestions.</p>
 <h2 style="text-align:center">☕️Coffee & Wifi 💻</h2>
 <p>This Python script implements a web application using the Flask framework
 for managing information about cafes. The application allows users to view a
