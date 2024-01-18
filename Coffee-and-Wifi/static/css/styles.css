@@ -16,9 +16,9 @@ html {
   text-align: center;
 }
 .home-container {
-  background: linear-gradient(-200deg, #f76116, #594e49, #6e6561);
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 180% 180%;
-  animation: gradient-animation 18s ease infinite;
+  animation: gradient-animation 15s ease infinite;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,7 +26,6 @@ html {
   margin: 0;
   height: 100vh;
   color: white;
-  background-color: #333;
 }
 
 @keyframes gradient-animation {
