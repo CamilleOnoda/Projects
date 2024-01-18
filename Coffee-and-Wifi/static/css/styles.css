@@ -148,11 +148,6 @@ ul li {
   padding: 15px;
 }
 
-/*Text doesn't wrap over several lines*/
-.table td {
-  white-space: nowrap;
-}
-
 /*Background color on hover for the cafes.html table*/
 .table-dark {
   --bs-table-bg: #212529;
