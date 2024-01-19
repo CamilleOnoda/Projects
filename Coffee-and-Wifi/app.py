@@ -17,7 +17,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY") or os.urandom(24)
 app.config['SECRET_KEY'] = SECRET_KEY
 
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///coffee-wifi.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URI", "sqlite:///coffee-wifi.db")
 db = SQLAlchemy()
 db.init_app(app)
 
