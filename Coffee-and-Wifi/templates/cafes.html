@@ -16,9 +16,9 @@
 	    <table class="table table-hover table-dark table-striped table-responsive d-block d-lg-table">
         <thead>
           <tr>
-            <th class="multiline-column">Cafe</th>
+            <th>Cafe</th>
             <th>City</th>
-            <th class="multiline-column">Location (URL)</th>
+            <th>Location (URL)</th>
             <th>Opening hours</th>
             <th>Closing days</th>
             <th>Sweets rating</th>
@@ -37,9 +37,9 @@
             {% endif %}
             {% for cafe in cafes_list %}
               <tr>
-                <td class="multiline-column">{{ cafe.cafe }}</td>
+                <td>{{ cafe.cafe }}</td>
                 <td>{{ cafe.city }}</td>
-                <td class="multiline-column">
+                <td>
                 {% if cafe.location.startswith('http') %}
                   <a id="map" href="{{ cafe.location }}" target="_blank" rel="noopener noreferrer">
                   Google Map</a>
@@ -47,8 +47,8 @@
                   <p>Location not found</p>
                 {% endif %}
                 </td>
-                <td>{{ cafe.open_hours }}</td>
-                <td class="multiline-column">{{ cafe.closed }}</td>
+                <td class="multiline-column">{{ cafe.open_hours }}</td>
+                <td>{{ cafe.closed }}</td>
                 <td>{{ cafe.sweets }}</td>
                 <td>{{ cafe.coffee }}</td>
                 <td>{{ cafe.wifi }}</td>
