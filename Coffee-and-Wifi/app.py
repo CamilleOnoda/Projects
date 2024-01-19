@@ -1,11 +1,11 @@
+from tokenize import String
 from flask import Flask, redirect, render_template, url_for, request, flash, session, abort
-from flask_migrate import Migrate
 from flask_bootstrap import Bootstrap5
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.declarative import declarative_base
 from flask_wtf import FlaskForm
-from wtforms import PasswordField, StringField, SelectField, SelectMultipleField, SubmitField, widgets
-from wtforms.validators import DataRequired
+from wtforms import EmailField, PasswordField, StringField, SelectField, SelectMultipleField, SubmitField, widgets
+from wtforms.validators import DataRequired, Email, Length
 from flask_login import LoginManager, UserMixin, login_user, login_required, current_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
@@ -80,6 +80,13 @@ class Cafeform(FlaskForm):
                                           ('⚡⚡⚡⚡⚡', '⚡⚡⚡⚡⚡')],
                                           validators=[DataRequired()])
     submit = SubmitField("✅ Confirm", validators=[DataRequired()])
+
+
+class contactForm(FlaskForm):
+    name = StringField('Your name', validators=[DataRequired()])
+    email = EmailField('Your email', validators=[Email()])
+    message = StringField('Your message', validators=[DataRequired(), Length(500)])
+
 
 Base = declarative_base()
 
@@ -261,6 +268,17 @@ def delete():
     db.session.commit()
     return redirect(url_for('cafes'))
 
+
+@app.route('/about')
+def about():
+    return render_template('about.html', logged_in=current_user.is_authenticated)
+
+@app.route('/contact')
+def contact():
+    form = contactForm()
+    if form.validate_on_submit():
+        return redirect(url_for('home'))
+    return render_template('contact.html', form=form, logged_in=current_user.is_authenticated)
 
 if __name__ == '__main__':
     app.run(debug=True)

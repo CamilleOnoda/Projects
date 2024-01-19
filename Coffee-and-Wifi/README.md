@@ -66,6 +66,18 @@ from the database.</p>
 <li>Access the home page at /logout.</li>
 <li>Users will be logged out and any cookies for their session will be cleaned up.</li>
 </ul>
+<h2>About</h2>
+<ul>
+<li>Access the about page at /about.</li>
+<li>Dispays a picture with a description of the purpose of this app.</li>
+<li>If users are logged in, they can navigate to the 'Contact'page and also log out. If they are not, they can access every pages: contact, log in, register.</li>
+</ul>
+<h2>Contact</h2>
+<ul>
+<li>Access the about page at /contact.</li>
+<li>Dispays a basic contact form.</li>
+<li>If users are logged in, they can navigate to the 'About' page and also log out. If they are not, they can access every pages: about, log in, register.</li>
+</ul>
 <h2>Cafe list page</h2>
 <ul>
 <li>Access the cafe list page at /cafes.</li>

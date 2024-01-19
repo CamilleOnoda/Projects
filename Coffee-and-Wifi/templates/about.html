@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="home-container">
+  <header class="d-flex justify-content-center py-3">
+    <span>Cafe Crawl</span>
+    <ul class="nav nav-pills">
+      <li class="nav-item"><a href="{{url_for('contact')}}" class="nav-link active">Contact</a></li>
+      {% if not logged_in %}
+      <li class="nav-item"><a href="{{url_for('login')}}" class="nav-link">Login</a></li>
+      <li class="nav-item"><a href="{{url_for('register')}}" class="nav-link">Register</a></li>
+      {% else %}
+      <li class="nav-item"><a href="{{url_for('logout')}}" class="nav-link">Log out</a></li>
+      {% endif %}
+  </header>
+  <div class="flex-container">
+    <div class="img">
+      <img src="/static/images/inuyama-sakura.jpg">
+    </div>
+    <h3>Thank you for checking this website!❤️</h3>
+    <p>This app is born out of my love for road cycling and the 
+      joy of discovering cyclist-friendly cafes.
+      I'm committed to maintaining and enhancing this app, making sure that it 
+      remains accessible to fellow cyclists eager to share their favorite cafes!
+      I built it as part of my programming journey, to further improve my web 
+      development skills with python🐍</p>
+      {% if logged_in %}
+      <a class="btn btn-warning btn-lg" href="{{ url_for('cafes') }}" role="button">Show me the cafes</a>
+      {% endif %}
+      <a class="btn btn-warning btn-m" href="{{ url_for('home') }}">
+        🔙 Return to home page</a>
+  </div>
+</div>
+{% endblock %}
+
